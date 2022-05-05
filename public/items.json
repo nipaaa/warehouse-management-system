@@ -1,56 +1,83 @@
 [
     {
         "id": 1,
-        "name": "ENGINE DIAGNOSTIC",
+        "name": "White Mini Top",
         "price": "300",
-        "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+        "description": "This is comfortable to use, soft fabric, off shoulder, short length top. You can use it both casually and formally.I don't design clothes. I design dreams.",
         "img": "https://i.ibb.co/84Xf93P/item-1.jpg",
         "quantity": "7",
         "supplierName": "Nourin Nipa"
     },
     {
         "id": 2,
-        "name": "WHEEL ALIGNMENT",
+        "name": "Brown Long Gawn",
         "price": "100",
-        "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+        "description": "This is comfortable to use, soft fabric, off shoulder, short length top. You can use it both casually and formally.I don't design clothes. I design dreams.",
         "img": "https://i.ibb.co/sHk96GM/item-2.jpg",
         "quantity": "8",
         "supplierName": "Sarodita Setu"
     },
     {
         "id": 3,
-        "name": "OIL CHANGING",
+        "name": "Yellow Mini Top",
         "price": "150",
-        "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+        "description": "This is comfortable to use, soft fabric, off shoulder, short length top. You can use it both casually and formally.I don't design clothes. I design dreams.",
         "img": "https://i.ibb.co/VC5S7zy/item-3.jpg",
         "quantity": "7",
         "supplierName": "Aditi Rani"
     },
     {
         "id": 4,
-        "name": "BRAKE REPARING",
+        "name": "White Skirt",
         "price": "180",
-        "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+        "description": "This is comfortable to use, soft fabric, off shoulder, short length top. You can use it both casually and formally.I don't design clothes. I design dreams.",
         "img": "https://i.ibb.co/7z51fyd/item-4.jpg",
         "quantity": "6",
         "supplierName": "Tanzila Nupur"
     },
     {
         "id": 5,
-        "name": "WASH AND GLASSING",
+        "name": "White and Pink Floral Top",
         "price": "100",
-        "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+        "description": "This is comfortable to use, soft fabric, off shoulder, short length top. You can use it both casually and formally.I don't design clothes. I design dreams.",
         "img": "https://i.ibb.co/fdDdj68/item-5.jpg",
         "quantity": "10",
         "supplierName": "Sadya Sultana"
     },
     {
         "id": 6,
-        "name": "COMPLETE ANALYSIS",
+        "name": "Red Blezar",
         "price": "300",
-        "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa",
+        "description": "This is comfortable to use, soft fabric, off shoulder, short length top. You can use it both casually and formally.I don't design clothes. I design dreams.",
         "img": "https://i.ibb.co/dM8XXLT/item-6.jpg",
         "quantity": "7",
         "supplierName": "Mithila Moni"
+    },
+    {
+        "id": 7,
+        "name": "Red Fancy Top",
+        "price": "300",
+        "description": "This is comfortable to use, soft fabric, off shoulder, short length top. You can use it both casually and formally.I don't design clothes. I design dreams.",
+        "img": "https://i.ibb.co/Fw4MZVC/item-7.jpg",
+        "quantity": "7",
+        "supplierName": "Marjan Troyee"
+    },
+    {
+        "id": 8,
+        "name": "Sea Green Gawn",
+        "price": "300",
+        "description": "This is comfortable to use, soft fabric, off shoulder, short length top. You can use it both casually and formally.I don't design clothes. I design dreams.",
+        "img": "https://i.ibb.co/fvKyYzg/item-8.jpg",
+        "quantity": "7",
+        "supplierName": "Anika Labiba"
+    },
+    {
+        "id": 9,
+        "name": "Yellow Skirt",
+        "price": "300",
+        "description": "This is comfortable to use, soft fabric, off shoulder, short length top. You can use it both casually and formally.I don't design clothes. I design dreams.",
+        "img": "https://i.ibb.co/hdW0c6D/banner-2.jpg",
+        "quantity": "7",
+        "supplierName": "Humaira Himu"
     }
 ]

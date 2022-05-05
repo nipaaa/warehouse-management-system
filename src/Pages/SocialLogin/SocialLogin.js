@@ -3,6 +3,7 @@ import { Button, Spinner } from 'react-bootstrap';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import Loading from '../Shared/Loding/Loading';
 
 
 const SocialLogin = () => {
@@ -18,7 +19,7 @@ const SocialLogin = () => {
     }
 
     if (loading) {
-        return <Spinner animation="border" variant="warning" />
+        return <Loading></Loading>
     }
 
     if (user) {

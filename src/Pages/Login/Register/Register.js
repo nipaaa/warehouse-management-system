@@ -3,6 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loding/Loading';
 
 const Register = () => {
 
@@ -19,6 +20,10 @@ const Register = () => {
       ] = useCreateUserWithEmailAndPassword(auth);
 
       const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+      if (loading || updating) {
+        return <Loading></Loading>
+    }
 
     const handleSubmit = async (event) => {
         event.preventDefault();

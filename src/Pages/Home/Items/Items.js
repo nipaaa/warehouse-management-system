@@ -10,7 +10,7 @@ const Items = () => {
            <CardGroup>
             {
                 items.map(item =><Item
-                    key={item.id}
+                    key={item._id}
                     item={item}
                 ></Item>
                   )
