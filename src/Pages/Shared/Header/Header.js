@@ -12,20 +12,27 @@ const Header = () => {
 }
     return (
         <div>
-            <Navbar collapseOnSelect expand="lg" sticky='top' bg="dark" variant="dark">
+            <Navbar collapseOnSelect expand="lg" sticky='top' bg="success" variant="dark">
   <Container>
-  <Navbar.Brand as={Link} to="/">Dream Of Style</Navbar.Brand>
+  <Navbar.Brand as={Link} to="/"><span className='text-warning fw-bolder'>Dream</span> Of Style</Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="me-auto">
       <Nav.Link href="home">Home</Nav.Link>
       <Nav.Link href="home#inventory">Items</Nav.Link>
+      <Nav.Link href="home#aboutUs">About</Nav.Link>
+      <Nav.Link href="home#contactUs">Contact</Nav.Link>
       <Nav.Link as={Link} to="/blogs">Blogs</Nav.Link>
     </Nav>
     <Nav>
     {
         user? 
+       <div className='d-lg-flex'>
+        <Nav.Link as={Link} to="/addItem" >Add Item</Nav.Link>
+        <Nav.Link as={Link} to="/manageItem" >Manage Item</Nav.Link>
+        <Nav.Link as={Link} to="/myItems" >My Items</Nav.Link>
         <Nav.Link as={Link} to="/" onClick={handleSignOut}>Sign Out</Nav.Link>
+       </div>
         :
         <div className='d-lg-flex'>
            <Nav.Link as={Link} to="/login">Log In</Nav.Link>

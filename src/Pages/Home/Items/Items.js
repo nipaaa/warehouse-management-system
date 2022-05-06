@@ -1,21 +1,27 @@
 import React from 'react';
-import { CardGroup } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import useItems from '../../../hooks/useItems';
 import Item from '../Home/Item/Item';
 
 const Items = () => {
-    const [items, setItems] = useItems();
+    const [items] = useItems();
+    const newItem = items.slice(0, 6);
     return (
-        <div id="items">
-           <CardGroup>
+        <div className='row g-0 my-5' id="inventory">
+
+            <h1 className='text-warning text-center mb-3'>Best Items</h1>
+
             {
-                items.map(item =><Item
+                newItem.map(item => <Item
                     key={item._id}
                     item={item}
                 ></Item>
-                  )
+                )
             }
-            </CardGroup>
+
+            <Nav.Link className='border-1 bg-success rounded-3 mx-auto w-50 text-center text-white fw-bold' as={Link} to="/manageItem" >Manage Items</Nav.Link>
+
         </div>
     );
 };

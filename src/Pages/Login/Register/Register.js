@@ -3,7 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
-import Loading from '../../Shared/Loding/Loading';
+import Loading from '../../Shared/Loading/Loading';
 
 const Register = () => {
 
@@ -44,8 +44,8 @@ const Register = () => {
         navigate('/login')
     }
     return (
-        <div className='w-50 mx-auto mb-5'>
-        <h2 className='text-warning text-center mt-2'>Please Register</h2>
+        <div className='w-50 mx-auto my-5'>
+        <h2 className='text-warning text-center mb-3'>Please Register</h2>
       <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="">
               <Form.Control ref={nameRef} type="text" placeholder="Enter Your Name" required />
@@ -58,11 +58,11 @@ const Register = () => {
           <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Control ref={passwordRef} type="password" placeholder="Password" required />
           </Form.Group>
-          <Button variant="warning" type="submit">
+          <Button className='w-50 mx-auto d-block text-white fw-bold' variant="success" type="submit">
               Register
           </Button>
       </Form>
-      <p>Already have an account? <Link to="/login" onClick={navigateLogin} className='text-danger pe-auto text-decoration-none' >Please Login</Link> </p>
+      <p className='text-center mt-2'>Already have an account? <Link to="/login" onClick={navigateLogin} className='text-success pe-auto text-decoration-none' >Please Login</Link> </p>
             
         </div>
     );

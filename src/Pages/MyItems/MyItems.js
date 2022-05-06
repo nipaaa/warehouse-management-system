@@ -1,11 +1,11 @@
 import React from 'react';
 
-const StockUpdate = () => {
+const MyItems = () => {
     return (
         <div>
-            
+            hkjl
         </div>
     );
 };
 
-export default StockUpdate;
+export default MyItems;
