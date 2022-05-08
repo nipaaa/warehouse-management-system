@@ -1,7 +1,11 @@
 # This is a React Project
 
 This project is about warehouse management system named 'Dream of Style'.
-[Live Link](https://independent-service-prov-8c99d.web.app).
+[Live Site Link](https://independent-service-prov-8c99d.web.app).
+[Server Side Code Link](https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-nipaaa).
+[stackover Flow Link](https://stackoverflow.com/questions/72161309/how-to-add-env-variable-to-react/72162228#72162228).
+
+
 
 ## About this Project
 
