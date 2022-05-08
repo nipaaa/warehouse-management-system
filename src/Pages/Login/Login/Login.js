@@ -28,7 +28,7 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
 
     const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(auth);
-    //const [token] = useToken(user);
+    const [token] = useToken(user);
 
     if (loading || sending) {
         return <Loading></Loading>
@@ -47,7 +47,7 @@ const Login = () => {
         errorMessage = <p className='text-danger'>Error: {error.message}</p>
     }
 
-    if (user) {
+    if (token) {
         navigate(from, { replace: true });
     }
 

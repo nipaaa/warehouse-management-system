@@ -10,17 +10,17 @@ const ItemDetails = () => {
   let { quantity } = item;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/inventory/${inventoryId}`)
+    fetch(`https://safe-everglades-50788.herokuapp.com/inventory/${inventoryId}`)
       .then(res => res.json())
       .then(data => setItem(data))
   }, [item])
 
-  const handleDeliverd = () =>{
-    const url = `http://localhost:5000/inventory/${inventoryId}`
+  const handleDeliverd = () => {
+    const url = `https://safe-everglades-50788.herokuapp.com/inventory/${inventoryId}`
 
     if (quantity > 0) {
       quantity = quantity - 1;
-      const updatedQuantity = {quantity};
+      const updatedQuantity = { quantity };
       item.quantity = quantity;
 
 
@@ -31,17 +31,17 @@ const ItemDetails = () => {
         },
         body: JSON.stringify(updatedQuantity)
       })
-      .then(res => res.json())
-      .then(data => {
-        if (data.modifiedCount) {
-          setItem(updatedQuantity);
-        }
-      })
-   
+        .then(res => res.json())
+        .then(data => {
+          if (data.modifiedCount) {
+            setItem(updatedQuantity);
+          }
+        })
+
     }
-    else if(quantity === 0){
+    else if (quantity === 0) {
       quantity = 'Sold Out';
-      const updatedQuantity = {quantity};
+      const updatedQuantity = { quantity };
       fetch(url, {
         method: 'PUT',
         headers: {
@@ -49,12 +49,12 @@ const ItemDetails = () => {
         },
         body: JSON.stringify(updatedQuantity)
       })
-      .then(res => res.json())
-      .then(data => {
-        if (data.modifiedCount) {
-          setItem(updatedQuantity);
-        }
-      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.modifiedCount) {
+            setItem(updatedQuantity);
+          }
+        })
 
     }
   }
@@ -69,7 +69,7 @@ const ItemDetails = () => {
   //     quantity = parseInt(addQuantity) + item.quantity;
   //   }
   //   const updatedQuantity = { quantity }
-  //   const url = `http://localhost:5000/inventory/${inventoryId}`
+  //   const url = `https://safe-everglades-50788.herokuapp.com/inventory/${inventoryId}`
   //   fetch(url, {
   //     method: 'PUT',
   //     headers: {
@@ -95,26 +95,26 @@ const ItemDetails = () => {
     const updatedQuantity = oldQuantity + newQuantity
     const updatedCar = { ...item, quantity: updatedQuantity }
     console.log(updatedCar)
-    const url = `http://localhost:5000/inventory/${inventoryId}`
+    const url = `https://safe-everglades-50788.herokuapp.com/inventory/${inventoryId}`
     fetch(url, {
-        method: 'put',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(updatedCar)
+      method: 'put',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(updatedCar)
     })
-        .then(res => res.json())
-        .then(data => {
-            if (data.modifiedCount > 0) {
-                console.log('success', data)
-                setItem(updatedCar)
-                toast.info('Quantity is added.', {
-                    position: toast.POSITION.TOP_CENTER
-                })
-                event.target.reset()
-            }
-        })
-}
+      .then(res => res.json())
+      .then(data => {
+        if (data.modifiedCount > 0) {
+          console.log('success', data)
+          setItem(updatedCar)
+          toast.info('Quantity is added.', {
+            position: toast.POSITION.TOP_CENTER
+          })
+          event.target.reset()
+        }
+      })
+  }
 
   return (
     <div className='my-5'>
