@@ -14,6 +14,36 @@ const ItemDetails = () => {
       .then(data => setItem(data))
   }, [item])
 
+  const handleDeliverd = id =>{
+    if (quantity > 1) {
+      quantity = quantity - 1;
+      const updatedQuantity = {quantity};
+      item.quantity = quantity;
+
+      const url = `https://safe-everglades-50788.herokuapp.com/inventory/${inventoryId}`
+      fetch(url, {
+        method: 'PUT',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(updatedQuantity)
+      })
+    }
+    else if(quantity === 1){
+      quantity = 'Sold Out';
+      const updatedQuantity = {quantity};
+      const url = `https://safe-everglades-50788.herokuapp.com/inventory/${inventoryId}`
+      fetch(url, {
+        method: 'PUT',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(updatedQuantity)
+      })
+
+    }
+  }
+
   const handleRestock = event => {
     event.preventDefault();
     const addQuantity = event.target.name.value;
@@ -46,7 +76,7 @@ const ItemDetails = () => {
               <p className="card-text">{item.description}</p>
               <p className="card-text"><small>Supplier Name: {item.supplierName}</small></p>
               <p className="card-text">Quantity: {quantity}</p>
-              <button type="button" className="btn btn-success">Delivered</button>
+              <button onClick={handleDeliverd} type="button" className="btn btn-success">Delivered</button>
             </div>
           </div>
           <div className="col-lg-4 col-sm-12">
