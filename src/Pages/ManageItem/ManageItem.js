@@ -30,7 +30,6 @@ const ManageItem = () => {
                         <th scope="col">Name</th>
                         <th scope="col">Price</th>
                         <th scope="col">Quantity</th>
-                        <th scope="col">Supplier Name</th>
                         <th scope="col">Delete</th>
                     </tr>
                 </thead>
@@ -41,10 +40,8 @@ const ManageItem = () => {
 
                             <tr key={item._id}>
                                 <th scope="row">{item.name}</th>
-
                                 <td>{item.price}</td>
                                 <td>{item.quantity}</td>
-                                <td>{item.supplierName}</td>
                                 <td onClick={() => handleDelete(item._id)}><i className="fs-5 text-danger fa-solid fa-trash-can"></i></td>
                             </tr>
 

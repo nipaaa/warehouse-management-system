@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import SocialLogin from '../../SocialLogin/SocialLogin';
+import useToken from '../../../hooks/useToken'
 
 const Login = () => {
     const emailRef = useRef('');
@@ -27,6 +28,7 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
 
     const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(auth);
+    //const [token] = useToken(user);
 
     if (loading || sending) {
         return <Loading></Loading>
@@ -38,9 +40,6 @@ const Login = () => {
         const password = passwordRef.current.value;
 
         await signInWithEmailAndPassword(email, password)
-        const { data } = await axios.post('https://safe-everglades-50788.herokuapp.com/login', { email })
-        localStorage.setItem('accessToken', data.accessToken);
-        navigate(from, { replace: true })
 
     }
 

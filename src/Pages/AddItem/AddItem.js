@@ -1,37 +1,85 @@
+
+
+import { Button, Form } from 'react-bootstrap';
 import React from 'react';
-import { useForm } from "react-hook-form";
+
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import { toast } from 'react-toastify';
 
 const AddItem = () => {
-    const { register, handleSubmit } = useForm();
 
-    const onSubmit = data => {
-        console.log(data);
-        const url = `https://safe-everglades-50788.herokuapp.com/inventory`;
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
+    const [user] = useAuthState(auth);
+    const handleItems = event => {
+    event.preventDefault();
+
+    const name = event.target.name.value;
+    const price = event.target.price.value;
+    const img = event.target.img.value;
+    const description = event.target.description.value;
+    const quantity = event.target.quantity.value;
+    const supplierName = event.target.supplierName.value;
+    const email = user?.email;
+
+    const item = {
+        name: name,
+        price: price,
+        img: img,
+        description,
+        quantity,
+        supplierName: supplierName,
+        email
+    }
+
+    const url = 'http://localhost:5000/inventory';
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+
+        body: JSON.stringify(item)
+    })
+        .then(res => res.json())
+        .then(data => {
+            if (data.insertedId) {
+                toast.success('The item has benn added successfully!')
+            }
         })
-            .then(res => res.json())
-            .then(result => {
-                console.log(result);
-            })
-    };
+    event.target.reset();
+}
     return (
-        <div className='w-50 mx-auto my-5'>
-            <h2 className='text-center text-warning mb-3'>Please add a new item</h2>
-            <form className='d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>
-                <input className='mb-2' placeholder='Name' {...register("name", { required: true, maxLength: 20 })} />
-                <textarea className='mb-2' placeholder='Description' {...register("description")} />
-                <input className='mb-2' placeholder='Supplier Name' {...register("supplierName")} />
-                <input className='mb-2' placeholder='Price' type="number" {...register("price")} />
-                <input className='mb-2' placeholder='Quantity' type="number" {...register("quantity")} />
-                <input className='mb-2' placeholder='Photo URL' type="text" {...register("img")} />
-                <input type="submit" className='bg-success border-0 rounded-3 w-50 mx-auto py-2 text-white fw-bold' value="Add Item" />
-            </form>
+      <div className='mb-5'>
+         <h1 className='my-2 text-uppercase text-dark'>Add New Item</h1>
+            <div className='w-25 mx-auto mt-4'>
+                <Form onSubmit={handleItems}>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Control type="name" name='name' placeholder="Item Name" required/>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Control type="number" name='price' placeholder="Item Price" required/>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Control type="text" name='img' placeholder="Image URl" required/>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Control as="textarea" name='description' row='4' placeholder="A short description of Item" required/>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Control type="number" name='quantity' placeholder="Quantity" required/>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Control type="text" name='supplierName' placeholder="Supplier Name" required/>
+                    </Form.Group>
+                    <Button variant="light" type="submit">
+                        Add This Item
+                    </Button>
+                </Form>
+            </div>
         </div>
+
+
+
     );
 };
 

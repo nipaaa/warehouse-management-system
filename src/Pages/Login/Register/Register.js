@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
+import useToken from '../../../hooks/useToken';
 
 const Register = () => {
 
@@ -20,6 +21,7 @@ const Register = () => {
       ] = useCreateUserWithEmailAndPassword(auth);
 
       const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+      const [token] = useToken(user);
 
       if (loading || updating) {
         return <Loading></Loading>
@@ -36,9 +38,9 @@ const Register = () => {
        navigate('/home');
     }
     
-    // if(user){
-    //     navigate('/home')
-    // }
+    if(token){
+        navigate('/home')
+    }
 
     const navigateLogin = () => {
         navigate('/login')

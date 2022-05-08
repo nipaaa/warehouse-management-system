@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from "react";
+import { toast } from 'react-toastify';
 
 const ItemDetails = () => {
   const { inventoryId } = useParams();
@@ -9,18 +10,20 @@ const ItemDetails = () => {
   let { quantity } = item;
 
   useEffect(() => {
-    fetch(`https://safe-everglades-50788.herokuapp.com/inventory/${inventoryId}`)
+    fetch(`http://localhost:5000/inventory/${inventoryId}`)
       .then(res => res.json())
       .then(data => setItem(data))
   }, [item])
 
-  const handleDeliverd = id =>{
-    if (quantity > 1) {
+  const handleDeliverd = () =>{
+    const url = `http://localhost:5000/inventory/${inventoryId}`
+
+    if (quantity > 0) {
       quantity = quantity - 1;
       const updatedQuantity = {quantity};
       item.quantity = quantity;
 
-      const url = `https://safe-everglades-50788.herokuapp.com/inventory/${inventoryId}`
+
       fetch(url, {
         method: 'PUT',
         headers: {
@@ -28,11 +31,17 @@ const ItemDetails = () => {
         },
         body: JSON.stringify(updatedQuantity)
       })
+      .then(res => res.json())
+      .then(data => {
+        if (data.modifiedCount) {
+          setItem(updatedQuantity);
+        }
+      })
+   
     }
-    else if(quantity === 1){
+    else if(quantity === 0){
       quantity = 'Sold Out';
       const updatedQuantity = {quantity};
-      const url = `https://safe-everglades-50788.herokuapp.com/inventory/${inventoryId}`
       fetch(url, {
         method: 'PUT',
         headers: {
@@ -40,30 +49,72 @@ const ItemDetails = () => {
         },
         body: JSON.stringify(updatedQuantity)
       })
+      .then(res => res.json())
+      .then(data => {
+        if (data.modifiedCount) {
+          setItem(updatedQuantity);
+        }
+      })
 
     }
   }
+
+  // const handleRestock = event => {
+  //   event.preventDefault();
+  //   const addQuantity = event.target.number.value;
+  //   if (quantity === 0) {
+  //     quantity = parseInt(addQuantity);
+  //   }
+  //   else {
+  //     quantity = parseInt(addQuantity) + item.quantity;
+  //   }
+  //   const updatedQuantity = { quantity }
+  //   const url = `http://localhost:5000/inventory/${inventoryId}`
+  //   fetch(url, {
+  //     method: 'PUT',
+  //     headers: {
+  //       'content-type': 'application/json'
+  //     },
+  //     body: JSON.stringify(updatedQuantity)
+  //   })
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     if (data.modifiedCount) {
+  //       setItem(updatedQuantity);
+  //     }
+  //   })
+  //   event.target.reset();
+  // }
 
   const handleRestock = event => {
-    event.preventDefault();
-    const addQuantity = event.target.name.value;
-    if (quantity === 'Sold Out') {
-      quantity = parseInt(addQuantity);
-    }
-    else {
-      quantity = parseInt(addQuantity) + item.quantity;
-    }
-    const updatedQuantity = { quantity }
-    const url = `https://safe-everglades-50788.herokuapp.com/inventory/${inventoryId}`
+    event.preventDefault()
+
+    const oldQuantity = parseInt(item.quantity)
+
+    const newQuantity = parseInt(event.target.number.value)
+    const updatedQuantity = oldQuantity + newQuantity
+    const updatedCar = { ...item, quantity: updatedQuantity }
+    console.log(updatedCar)
+    const url = `http://localhost:5000/inventory/${inventoryId}`
     fetch(url, {
-      method: 'PUT',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(updatedQuantity)
+        method: 'put',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(updatedCar)
     })
-    event.target.reset();
-  }
+        .then(res => res.json())
+        .then(data => {
+            if (data.modifiedCount > 0) {
+                console.log('success', data)
+                setItem(updatedCar)
+                toast.info('Quantity is added.', {
+                    position: toast.POSITION.TOP_CENTER
+                })
+                event.target.reset()
+            }
+        })
+}
 
   return (
     <div className='my-5'>
@@ -87,7 +138,7 @@ const ItemDetails = () => {
               <h5 className="card-title">Restock The Items</h5>
               <form onSubmit={handleRestock}>
                 <input placeholder='Quantity' type="number" name="number" id="" /> <br />
-                <button type="button" className="btn btn-success my-2">Restock</button>
+                <button type="submit" className="btn btn-success my-2">Restock</button>
               </form>
             </div>
           </div>
