@@ -3,10 +3,10 @@ import { useForm } from "react-hook-form";
 
 const AddItem = () => {
     const { register, handleSubmit } = useForm();
-    
+
     const onSubmit = data => {
         console.log(data);
-        const url = `http://localhost:5000/inventory`;
+        const url = `https://safe-everglades-50788.herokuapp.com/inventory`;
         fetch(url, {
             method: 'POST',
             headers: {
@@ -14,24 +14,24 @@ const AddItem = () => {
             },
             body: JSON.stringify(data)
         })
-        .then(res=> res.json())
-        .then(result =>{
-            console.log(result);
-        } )
+            .then(res => res.json())
+            .then(result => {
+                console.log(result);
+            })
     };
     return (
         <div className='w-50 mx-auto my-5'>
-        <h2 className='text-center text-warning mb-3'>Please add a new item</h2>
-        <form className='d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>
-            <input className='mb-2' placeholder='Name' {...register("name", { required: true, maxLength: 20 })} />
-            <textarea className='mb-2' placeholder='Description' {...register("description")} />
-            <input className='mb-2' placeholder='Suplier Name' {...register("supplierName")} />
-            <input className='mb-2' placeholder='Price' type="number" {...register("price")} />
-            <input className='mb-2' placeholder='Quantity' type="number" {...register("quantity")} />
-            <input className='mb-2' placeholder='Photo URL' type="text" {...register("img")} />
-            <input type="submit" className='bg-success border-0 rounded-3 w-50 mx-auto py-2 text-white fw-bold' value="Add Item" />
-        </form>
-    </div>
+            <h2 className='text-center text-warning mb-3'>Please add a new item</h2>
+            <form className='d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>
+                <input className='mb-2' placeholder='Name' {...register("name", { required: true, maxLength: 20 })} />
+                <textarea className='mb-2' placeholder='Description' {...register("description")} />
+                <input className='mb-2' placeholder='Supplier Name' {...register("supplierName")} />
+                <input className='mb-2' placeholder='Price' type="number" {...register("price")} />
+                <input className='mb-2' placeholder='Quantity' type="number" {...register("quantity")} />
+                <input className='mb-2' placeholder='Photo URL' type="text" {...register("img")} />
+                <input type="submit" className='bg-success border-0 rounded-3 w-50 mx-auto py-2 text-white fw-bold' value="Add Item" />
+            </form>
+        </div>
     );
 };
 
