@@ -71,7 +71,7 @@ const AddItem = () => {
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Control type="text" name='supplierName' placeholder="Supplier Name" required />
                     </Form.Group>
-                    <Button variant="success" type="submit">
+                    <Button className='mx-auto d-block' variant="success" type="submit">
                         Add This Item
                     </Button>
                 </Form>
