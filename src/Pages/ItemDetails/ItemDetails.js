@@ -59,33 +59,6 @@ const ItemDetails = () => {
     }
   }
 
-  // const handleRestock = event => {
-  //   event.preventDefault();
-  //   const addQuantity = event.target.number.value;
-  //   if (quantity === 0) {
-  //     quantity = parseInt(addQuantity);
-  //   }
-  //   else {
-  //     quantity = parseInt(addQuantity) + item.quantity;
-  //   }
-  //   const updatedQuantity = { quantity }
-  //   const url = `https://safe-everglades-50788.herokuapp.com/inventory/${inventoryId}`
-  //   fetch(url, {
-  //     method: 'PUT',
-  //     headers: {
-  //       'content-type': 'application/json'
-  //     },
-  //     body: JSON.stringify(updatedQuantity)
-  //   })
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     if (data.modifiedCount) {
-  //       setItem(updatedQuantity);
-  //     }
-  //   })
-  //   event.target.reset();
-  // }
-
   const handleRestock = event => {
     event.preventDefault()
 

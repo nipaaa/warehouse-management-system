@@ -5,6 +5,7 @@ import './App.css';
 import AddItem from './Pages/AddItem/AddItem';
 import Blogs from './Pages/Blogs/Blogs';
 import ContactUs from './Pages/Home/ContactUs/ContactUs';
+import AboutUs from './Pages/AboutUs/AboutUs';
 import Home from './Pages/Home/Home/Home';
 import Items from './Pages/Home/Items/Items';
 import ItemDetails from './Pages/ItemDetails/ItemDetails';
@@ -25,7 +26,7 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/contactUs" element={<ContactUs></ContactUs>}></Route>
-        <Route path="/aboutUs" element={<ContactUs></ContactUs>}></Route>
+        <Route path="/aboutUs" element={<AboutUs></AboutUs>}></Route>
         <Route path="/inventory" element={<Items></Items>}></Route>
         <Route path="/inventory/:inventoryId" element={
           <RequireAuth>

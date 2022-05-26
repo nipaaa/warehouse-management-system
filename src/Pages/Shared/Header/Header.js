@@ -11,17 +11,17 @@ const Header = () => {
     signOut(auth);
 }
     return (
-        <div>
+    
             <Navbar collapseOnSelect expand="lg" sticky='top' bg="success" variant="dark">
   <Container>
   <Navbar.Brand as={Link} to="/"><span className='text-warning fw-bolder'>Dream</span> Of Style</Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="me-auto">
-      <Nav.Link href="home">Home</Nav.Link>
-      <Nav.Link href="home#inventory">Items</Nav.Link>
-      <Nav.Link href="home#aboutUs">About</Nav.Link>
-      <Nav.Link href="home#contactUs">Contact</Nav.Link>
+      <Nav.Link as={Link} to="home">Home</Nav.Link>
+      <Nav.Link as={Link} to="/inventory">Items</Nav.Link>
+      <Nav.Link as={Link} to="/aboutUs">About</Nav.Link>
+      <Nav.Link as={Link} to="/contactUs">Contact</Nav.Link>
       <Nav.Link as={Link} to="/blogs">Blogs</Nav.Link>
     </Nav>
     <Nav>
@@ -45,7 +45,7 @@ const Header = () => {
   </Container>
 </Navbar>
             
-        </div>
+    
     );
 };
 

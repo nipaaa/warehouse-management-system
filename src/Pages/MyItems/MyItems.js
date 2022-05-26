@@ -42,7 +42,7 @@ const MyItems = () => {
             }
         }
         getMyItems();
-    }, [user])
+    }, [user.email])
 
     const deleteFromMyItems = async (id) => {
 
