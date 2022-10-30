@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
 const useItems = () => {
-    const [items, setItems] = useState([]);
+  const [items, setItems] = useState([]);
 
-    useEffect(() => {
-        fetch('https://safe-everglades-50788.herokuapp.com/inventory')
-            .then(res => res.json())
-            .then(data => setItems(data));
-    }, []);
-    return [items, setItems]
-}
+  useEffect(() => {
+    fetch("https://warehouse-management-ssr.onrender.com/inventory")
+      .then((res) => res.json())
+      .then((data) => setItems(data));
+  }, []);
+  return [items, setItems];
+};
 export default useItems;
